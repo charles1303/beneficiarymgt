@@ -25,7 +25,6 @@ class BeneficiaryCaseController extends Controller
      */
     public function create()
     {
-        //return view('beneficiary.create');
         return view('layouts/beneficiary/createbeneficiary');
     }
 
@@ -35,37 +34,9 @@ class BeneficiaryCaseController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(BeneficiaryFormRequest $request)
+    public function store(BeneficiaryCaseRequest $request)
     {
-        //$beneficiary = new Beneficiary();
 
-        //$beneficiary->firstname = $request->get('name');
-
-        //$beneficiary->save();
-
-
-        //return \View::make('layouts/beneficiary/createbeneficiary')->with('status', 'Successful.');
-
-        //return \Redirect::to('beneficiary')->with('status', 'Login Failed');
-
-        //return redirect()->route('beneficiary', ['status'=>'Login Failed']);
-
-        \Session::flash('message', 'My message');
-
-        return \Redirect::to('beneficiary');
-
-
-        //return redirect()->back()->with('status', 'Login Failed');
-
-        //return redirect()->back()->withInput();
-
-        //return redirect()->action('BeneficiaryController@show')->with('status', 'Profile updated!');
-
-        //return redirect()->route('beneficiary.show',array('name' =>'The Name'))->with('status', 'Profile updated!');
-
-        /*return \Redirect::route('beneficiary.show',
-            array(3))
-            ->with('message', 'Your beneficiary has been created!');*/
 
     }
 
@@ -78,7 +49,7 @@ class BeneficiaryCaseController extends Controller
     public function show($name = null)
     {
         //return view('hello',array('name' => $name));
-        return view('layouts/beneficiary/show',array('name' => $name,'message' =>'Your beneficiary has been created!'));
+
     }
 
     /**
