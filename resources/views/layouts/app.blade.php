@@ -8,13 +8,12 @@
     <title>Benevolence</title>
 
 	   <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{asset('css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-        <link href="{{asset('css/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
-        <link href="{{asset('css/select2/select2.min.css')}}" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -84,71 +83,9 @@
 
     @yield('content')
 
-    <script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/moment.js')}}"></script>
-<script src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
-
-<script src="{{asset('js/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('js/select2/select2.min.js')}}"></script>
-    <!--TODO These scripts should be refactored and  moved from here as they don't belong here -->
-<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-            function getBeneficiary(beneficiaryId){
-                $("#loading-image").show();
-                $.when(
-                        $.ajax({
-                            url:"/getbeneficiary"+'?id='+beneficiaryId,
-                            success: function(data){
-                                $('#loaded-data').html(data);
-                            },
-                            error: function (err) {
-
-                                $('#loaded-data').html(err.responseText);
-                                $("#loading-image").hide();
-                            }
-                        })
-                ).then(function(){
-                            $("#loading-image").hide();
-                        });
-            }
 
 
-        </script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-    $('#example').DataTable();
-    $('#myPendingCases').DataTable();
-    $("#beneficiary").select2({
-        minimumInputLength: 3,
-        placeholder: 'Search for Beneficiary By name',
-        ajax: {
-            url: "/searchbeneficiary",
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-                return {
-                    q: params.term // search term
-                };
-            },
-            processResults: function (data, params) {
-                params.page = params.page || 1;
-                return {
-                        results: $.map(data, function(obj) {
-                            return { id: obj.id, text: obj.firstname };
-                        })
-                    };
-            },
-            cache: true
-        }
-    }).on('change', function (e) {
-                        getBeneficiary($(this).val());
-                    });
-    });
-        </script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

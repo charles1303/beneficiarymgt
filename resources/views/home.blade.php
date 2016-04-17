@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+
+<link href="{!! asset('css/datatables/jquery.dataTables.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{!! asset('js/jquery.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/datatables/jquery.dataTables.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/beneficiarymgt/mypendingcases.js') !!}"></script>
+
 @section('content')
 <div class="container">
     <div class="row">

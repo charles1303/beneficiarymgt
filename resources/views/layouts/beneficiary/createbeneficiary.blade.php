@@ -6,6 +6,13 @@
     @parent
 @endsection
 
+<link href="{!! asset('css/bootstrap-datetimepicker.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="{!! asset('js/jquery.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/moment.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/bootstrap-datetimepicker.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/beneficiarymgt/createbeneficiary.js') !!}"></script>
+
 @section('content')
     <div class="row">
   <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">

@@ -8,6 +8,11 @@
             <!--p>This is appended to the master sidebar.</p-->
 @endsection
 
+<link href="{!! asset('css/datatables/jquery.dataTables.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{!! asset('js/jquery.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/datatables/jquery.dataTables.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/beneficiarymgt/mypendingcases.js') !!}"></script>
+
 @section('content')
 <div class="row">
   <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
