@@ -25,7 +25,7 @@ class BeneficiaryCaseController extends Controller
      */
     public function create()
     {
-        return view('layouts/beneficiary/createbeneficiary');
+        return view('layouts/beneficiary/createcase');
     }
 
     /**

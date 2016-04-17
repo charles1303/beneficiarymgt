@@ -26,6 +26,16 @@ Route::group(['middleware' => 'web'], function () {
         ['as' => 'createbeneficiary', 'uses' => 'BeneficiaryController@store']);
     Route::get('pendingcases',
         ['as' => 'pendingcases', 'uses' => 'BeneficiaryCaseController@index']);
+
+
+   	Route::get('createcase',
+        ['as' => 'createcase', 'uses' => 'BeneficiaryCaseController@create']);
+
+   	Route::get('searchbeneficiary',
+        ['as' => 'searchbeneficiary', 'uses' => 'BeneficiaryController@searchBeneficiary']);
+
+    Route::get('getbeneficiary',
+        ['as' => 'getbeneficiary', 'uses' => 'BeneficiaryController@BeneficiaryById']);
 });
 
 /*

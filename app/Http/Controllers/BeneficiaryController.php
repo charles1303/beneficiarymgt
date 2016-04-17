@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Beneficiary;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,7 +32,6 @@ class BeneficiaryController extends Controller
      */
     public function create()
     {
-        //return view('beneficiary.create');
         return view('layouts/beneficiary/createbeneficiary');
     }
 
@@ -106,5 +106,26 @@ class BeneficiaryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function loadAllBeneficiaries(){
+
+        $allBeneficiaries = Beneficiary::all();
+        return response()->json(['allBeneficiaries' => $allBeneficiaries->toArray()]);
+    }
+
+    public function searchBeneficiary(Request $request){
+
+        $q = $request->get('q');
+        $beneficiaryModel = new Beneficiary();
+        $allBeneficiaries = $beneficiaryModel->searchBeneficiary($q);
+        return response()->json($allBeneficiaries);
+    }
+
+    public function BeneficiaryById(Request $request){
+        $id = $request->get('id');
+        $beneficiary = Beneficiary::find($id);
+        return response()->json($beneficiary);
+
     }
 }
