@@ -122,32 +122,32 @@
             $(document).ready(function() {
     $('#example').DataTable();
     $('#myPendingCases').DataTable();
-                $("#beneficiary").select2({
-                    minimumInputLength: 3,
-                    placeholder: 'Search for Beneficiary By name',
-                    ajax: {
-                        url: "/searchbeneficiary",
-                        dataType: 'json',
-                        delay: 250,
-                        data: function (params) {
-                            return {
-                                q: params.term // search term
-                            };
-                        },
-                        processResults: function (data, params) {
-                            params.page = params.page || 1;
-                            return {
-                                    results: $.map(data, function(obj) {
-                                        return { id: obj.id, text: obj.firstname };
-                                    })
-                                };
-                        },
-                        cache: true
-                    }
-}).on('change', function (e) {
-                    getBeneficiary($(this).val());
-                });
-});
+    $("#beneficiary").select2({
+        minimumInputLength: 3,
+        placeholder: 'Search for Beneficiary By name',
+        ajax: {
+            url: "/searchbeneficiary",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term // search term
+                };
+            },
+            processResults: function (data, params) {
+                params.page = params.page || 1;
+                return {
+                        results: $.map(data, function(obj) {
+                            return { id: obj.id, text: obj.firstname };
+                        })
+                    };
+            },
+            cache: true
+        }
+    }).on('change', function (e) {
+                        getBeneficiary($(this).val());
+                    });
+    });
         </script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
