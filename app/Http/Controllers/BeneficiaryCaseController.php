@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\BeneficiaryCaseRequest;
 
 use App\Http\ControllerHelpers\BeneficiaryCaseControllerHelper;
-
+use App\Http\Util\EmailUtil;
 class BeneficiaryCaseController extends Controller
 {
     /**
@@ -20,6 +20,11 @@ class BeneficiaryCaseController extends Controller
     public function index()
     {
         return view('layouts/beneficiary/mypendingcases');
+    }
+
+    public function getCase()
+    {
+        return view('layouts/beneficiary/updatecase');
     }
 
     /**
@@ -54,6 +59,7 @@ class BeneficiaryCaseController extends Controller
             $case->save();
             $message = 'Case has been created!';
             $messageClass = 'alert alert-success';
+            EmailUtil::sendEmailReminder('recipient@gmail.com','A case has been created for beneficiary','Beneficiary Case');
         }catch(Exception $ex){
             $message = 'Error creating case. Please contact Administrator! ' . $ex->getMessage();
             $messageClass = 'alert alert-error';

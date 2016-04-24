@@ -54,7 +54,7 @@
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('/createbeneficiary') }}">Create Beneficiary</a></li>
                         <li><a href="{{ url('/createcase') }}">Create Case</a></li>
-                        <li><a href="#">Update Case</a></li>
+                        <li><a href="{{ url('/updatecase') }}">Update Case</a></li>
                     @endif
 
                 </ul>

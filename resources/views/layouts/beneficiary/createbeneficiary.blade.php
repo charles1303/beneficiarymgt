@@ -151,7 +151,7 @@
             
             <div class="form-group">
                 {!! Form::submit('Register', 
-                  array('class'=>'btn btn-info btn-block')) !!}
+                  array('class'=>'btn btn-info center-block')) !!}
             </div>
             
           

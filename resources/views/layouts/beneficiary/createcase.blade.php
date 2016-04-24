@@ -38,10 +38,10 @@
 
                     <div><span id='ben_id' style="display: none"></span><br/></div>
                     <div id='beneficiary'>
-                        <span id='ben_num'>Beneficiary Number : </span><br/>
-                        <span id='ben_fname'>Beneficiary First Name : </span><br/>
-                        <span id='ben_lname'>Beneficiary Last Name : </span><br/>
-                        <span id='ben_addr'>Beneficiary Address : </span><br/>
+                        <span id='ben_num' class='text-primary'><strong><em>Beneficiary Number : </em></strong></span><br/>
+                        <span id='ben_fname' class='text-primary'><strong><em>Beneficiary First Name : </em></strong></span><br/>
+                        <span id='ben_lname' class='text-primary'><strong><em>Beneficiary Last Name : </em></strong></span><br/>
+                        <span id='ben_addr' class='text-primary'><strong><em>Beneficiary Address : </em></strong></span><br/>
                     </div>
                         </div>
 
