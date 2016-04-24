@@ -31,11 +31,17 @@ Route::group(['middleware' => 'web'], function () {
    	Route::get('createcase',
         ['as' => 'createcase', 'uses' => 'BeneficiaryCaseController@create']);
 
+    Route::post('createcase',
+        ['as' => 'createcase', 'uses' => 'BeneficiaryCaseController@createCase']);
+
    	Route::get('searchbeneficiary',
         ['as' => 'searchbeneficiary', 'uses' => 'BeneficiaryController@searchBeneficiary']);
 
     Route::get('getbeneficiary',
         ['as' => 'getbeneficiary', 'uses' => 'BeneficiaryController@BeneficiaryById']);
+
+    Route::get('searchcaseofficer',
+        ['as' => 'searchcaseofficer', 'uses' => 'UserController@searchCaseOfficer']);
 });
 
 /*

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\BeneficiaryCaseRequest;
+
+use App\Http\ControllerHelpers\BeneficiaryCaseControllerHelper;
+
 class BeneficiaryCaseController extends Controller
 {
     /**
@@ -37,6 +41,26 @@ class BeneficiaryCaseController extends Controller
     public function store(BeneficiaryCaseRequest $request)
     {
 
+
+    }
+
+    public function createCase(BeneficiaryCaseRequest $request)
+    {
+        $message = '';
+        $messageClass = '';
+        try{
+            $beneficiaryCaseControllerHelper = new BeneficiaryCaseControllerHelper();
+            $case = $beneficiaryCaseControllerHelper->createBeneficiaryCaseObject($request);
+            $case->save();
+            $message = 'Case has been created!';
+            $messageClass = 'alert alert-success';
+        }catch(Exception $ex){
+            $message = 'Error creating case. Please contact Administrator! ' . $ex->getMessage();
+            $messageClass = 'alert alert-error';
+            //throw $ex;
+        }
+
+        return view('layouts/beneficiary/createcase',array('message' =>$message,'messageClass' => $messageClass));
 
     }
 
