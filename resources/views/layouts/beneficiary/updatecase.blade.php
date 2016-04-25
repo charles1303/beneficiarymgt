@@ -36,6 +36,7 @@
 
                     <div class="col-xs-12">
 
+                        <span id='search_msg' class='text-primary'><strong><em></em></strong></span><br/>
                         <div><span id='ben_id' style="display: none"></span><br/></div>
                         <div id='beneficiary'>
                             <span id='ben_num' class='text-primary'><strong><em>Beneficiary Number : </em></strong></span><br/>

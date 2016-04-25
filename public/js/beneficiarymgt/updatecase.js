@@ -27,13 +27,22 @@ var UpdateCase ={
                 }
             })
         ).then(function(data){
-                $('span#ben_id').append(data[0].beneficiary.id);
-                $('span#ben_num').append(data[0].beneficiary.beneficiary_num);
-                $('span#ben_fname').append(data[0].beneficiary.firstname);
-                $('span#ben_lname').append(data[0].beneficiary.lastname);
-                $('span#ben_addr').append(data[0].beneficiary.address);
-                $('#beneficiary span').show();
-                $('#ben_cases').show();
+                if(data != null && data.length > 0){
+                    $('span#search_msg').html('');
+                    $('span#ben_id').append(data[0].beneficiary.id);
+                    $('span#ben_num').append(data[0].beneficiary.beneficiary_num);
+                    $('span#ben_fname').append(data[0].beneficiary.firstname);
+                    $('span#ben_lname').append(data[0].beneficiary.lastname);
+                    $('span#ben_addr').append(data[0].beneficiary.address);
+                    $('#beneficiary span').show();
+                    $('#ben_cases').show();
+                }else{
+                    $('span#search_msg').append('No case exists for selected beneficiary!');
+                    $('#beneficiary span').hide();
+                    $('#ben_cases').hide();
+                    $('#case_details').hide();
+                }
+
 
             });
     }
