@@ -42,7 +42,7 @@ class BeneficiaryCase extends Model
     public function getDuration()
     {
         $from=date_create(date('Y-m-d'));
-        $to=date_create('2016-04-31');
+        $to=date_create($this->entry_date);
         $diff=date_diff($from,$to);
         return $diff->format('%R%a ');
     }

@@ -121,8 +121,6 @@ class BeneficiaryCaseController extends Controller
     public function beneficiaryCaseById(Request $request){
         $id = $request->get('id');
         $beneficiaryCases = BeneficiaryCase::getCaseByBeneficiaryId($id);
-        $initVal = ['id'=> '' ,'case_num'=> ""];
-
         $json = response()->json($beneficiaryCases);
         return $json;
 
