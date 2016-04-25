@@ -122,7 +122,7 @@ class BeneficiaryController extends Controller
         return response()->json($allBeneficiaries);
     }
 
-    public function BeneficiaryById(Request $request){
+    public function beneficiaryById(Request $request){
         $id = $request->get('id');
         $beneficiary = Beneficiary::find($id);
         return response()->json($beneficiary);

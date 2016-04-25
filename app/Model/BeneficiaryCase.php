@@ -46,4 +46,10 @@ class BeneficiaryCase extends Model
         $diff=date_diff($from,$to);
         return $diff->format('%R%a ');
     }
+
+    public static function getCaseByBeneficiaryId($id){
+        $cases = BeneficiaryCase::with('beneficiary')->where('beneficiary_id','=', $id)
+            ->get();
+        return $cases;
+    }
 }

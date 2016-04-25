@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\BeneficiaryCase;
+use App\Model\Beneficiary;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -114,6 +116,24 @@ class BeneficiaryCaseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function beneficiaryCaseById(Request $request){
+        $id = $request->get('id');
+        $beneficiaryCases = BeneficiaryCase::getCaseByBeneficiaryId($id);
+        $initVal = ['id'=> '' ,'case_num'=> ""];
+
+        $json = response()->json($beneficiaryCases);
+        return $json;
+
+    }
+
+    public function searchBeneficiaryCaseByBeneficiary(Request $request){
+
+        $q = $request->get('q');
+        $beneficiaryModel = new Beneficiary();
+        $allBeneficiaries = $beneficiaryModel->searchBeneficiary($q);
+        return response()->json($allBeneficiaries);
     }
 
 }

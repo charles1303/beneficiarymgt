@@ -41,7 +41,10 @@ Route::group(['middleware' => 'web'], function () {
         ['as' => 'searchbeneficiary', 'uses' => 'BeneficiaryController@searchBeneficiary']);
 
     Route::get('getbeneficiary',
-        ['as' => 'getbeneficiary', 'uses' => 'BeneficiaryController@BeneficiaryById']);
+        ['as' => 'getbeneficiary', 'uses' => 'BeneficiaryController@beneficiaryById']);
+
+    Route::get('getbeneficiarycase',
+        ['as' => 'getbeneficiarycase', 'uses' => 'BeneficiaryCaseController@beneficiaryCaseById']);
 
     Route::get('searchcaseofficer',
         ['as' => 'searchcaseofficer', 'uses' => 'UserController@searchCaseOfficer']);

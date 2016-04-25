@@ -12,7 +12,7 @@
 <script type="text/javascript" src="{!! asset('js/jquery.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/select2/select2.min.js') !!}"></script>
 
-<script type="text/javascript" src="{!! asset('js/beneficiarymgt/createcase.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/beneficiarymgt/updatecase.js') !!}"></script>
 
 
 
@@ -42,23 +42,30 @@
                             <span id='ben_fname' class='text-primary'><strong><em>Beneficiary First Name : </em></strong></span><br/>
                             <span id='ben_lname' class='text-primary'><strong><em>Beneficiary Last Name : </em></strong></span><br/>
                             <span id='ben_addr' class='text-primary'><strong><em>Beneficiary Address : </em></strong></span><br/>
-                        </div>
-                    </div>
 
+                        </div>
+
+                    </div>
 
                     {!! Form::open(array('route' => 'updatecase')) !!}
 
+                    <div id="ben_cases">
+                        <div class="form-group">
+                            {!! Form::label('Select a beneficiary case:') !!}
+                            {{ Form::select('beneficiaryCase', [], null, ['id' => 'beneficiaryCase', 'class' => 'form-control']) }}
+                        </div>
+                    </div>
+
                     <input type="hidden" name="case_id" id="case_id">
                     <div id='case_details'>
-
                         <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                         <div class="col-xs-12">
                             <div class="form-group">
-                                {!! Form::label('Case Description:') !!}
-                                {!! Form::textarea('case_descr', null,
+                                {!! Form::label('Case Update:') !!}
+                                {!! Form::textarea('case_update', null,
                                 array('required',
                                 'class'=>'form-control',
-                                'placeholder'=>'Case Description','rows'=>'5')) !!}
+                                'placeholder'=>'Case Update','rows'=>'5')) !!}
 
                             </div>
                         </div>
