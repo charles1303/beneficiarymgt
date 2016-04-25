@@ -16,6 +16,7 @@ var UpdateCase ={
                             return { id: obj.id, text: obj.case_num };
                         })
                     }).on('change', function (e) {
+                        $('#case_id').val($(this).val());
                         $('#case_details').show();
                     }).append($('<option selected>Loading...</option>').val(''));
                 },
@@ -26,7 +27,6 @@ var UpdateCase ={
                 }
             })
         ).then(function(data){
-                $('#beneficiary_id').val(data[0].beneficiary.id);
                 $('span#ben_id').append(data[0].beneficiary.id);
                 $('span#ben_num').append(data[0].beneficiary.beneficiary_num);
                 $('span#ben_fname').append(data[0].beneficiary.firstname);
