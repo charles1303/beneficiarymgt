@@ -25,4 +25,11 @@ class Beneficiary extends BaseModel
 		//return self::where('firstname', 'like', '%'.$term.'%')->lists('beneficiary_num','id')->toArray();
 	}
 
+	public function getMaxId(){
+		$maxId = DB::table('beneficiaries')
+			->select(DB::raw('max(id) as id'))
+			->get();
+		return $maxId;
+	}
+
 }

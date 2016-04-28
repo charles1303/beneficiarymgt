@@ -30,7 +30,6 @@ class BeneficiaryFormRequest extends Request
     public function rules()
     {
         return [
-            'beneficiary_num' => 'required',
             'first_name' => 'required'
         ];
     }

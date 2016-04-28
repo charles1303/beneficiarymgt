@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','group'
     ];
 
     /**
@@ -31,4 +31,13 @@ class User extends Authenticatable
             ->get();
         //return self::where('firstname', 'like', '%'.$term.'%')->lists('beneficiary_num','id')->toArray();
     }
+
+    public function getMaxId(){
+        $maxId = DB::table('beneficiaries')
+            ->select(DB::raw('max(id) as id'))
+            ->get();
+        return $maxId;
+    }
+
+
 }

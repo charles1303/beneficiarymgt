@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+                            <label class="col-md-4 control-label">Password (Minimum 6 Characters)</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
@@ -61,6 +61,23 @@
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('group') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Group</label>
+
+                            <div class="col-md-6">
+                                <select name="group">
+                                    <option value="1">Member</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Church Office</option>
+                                </select>
+
+                                @if ($errors->has('group'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group') }}</strong>
                                     </span>
                                 @endif
                             </div>

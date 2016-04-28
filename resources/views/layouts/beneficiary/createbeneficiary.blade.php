@@ -28,16 +28,7 @@
       <div class="panel-body">
         {!! Form::open(array('route' => 'createbeneficiary')) !!}
         
-            <div class="form-group">
-                {!! Form::label('Beneficiary Number:') !!}
-                {!! Form::text('beneficiary_num', null, 
-                    array('required', 
-                          'class'=>'form-control input-sm', 
-                          'placeholder'=>'Beneficiary Number')) !!}
-            </div>
-
-
-          <div class="row">
+           <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group">
                 {!! Form::label('First Name:') !!}

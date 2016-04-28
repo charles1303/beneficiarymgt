@@ -70,6 +70,27 @@
 
                             </div>
                         </div>
+                        <div class="col-xs-12">
+
+                                <div class="form-group">
+                                        {!! Form::label('Status:') !!}
+                                        {!! Form::select('case_status', array('0'=>'Open','1'=>'Approved','2'=>'Closed','3'=>'Reject'),
+                                        array('required',
+                                        'class'=>'form-control')) !!}
+
+                                </div>
+
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                {!! Form::label('Amount Released:') !!}
+                                {!! Form::text('amount_released', '0.00',
+                                array('required',
+                                'class'=>'form-control input-sm',
+                                'placeholder'=>'Amount Released')) !!}
+
+                            </div>
+                        </div>
 
                         <div class="col-xs-12">
                             <div class="form-group">

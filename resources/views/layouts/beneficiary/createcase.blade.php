@@ -64,30 +64,17 @@
                             </div>
 
                         <div class="col-xs-12">
-                            <div class="col-xs-6">
-                        <div class="form-group">
-                            {!! Form::label('Status:') !!}
-                            {!! Form::select('case_status', array('O'=>'Open','M'=>'Approved','C'=>'Closed'),
-                            array('required',
-                            'class'=>'form-control')) !!}
-
-                        </div>
-                                </div>
-
-                                <div class="col-xs-6">
                             <div class="form-group">
                                 {!! Form::label('Type:') !!}
                                 {!! Form::select('case_type', array('E'=>'Empowerment','A'=>'Accommodation','M'=>'Medical','T'=>'Tuition'),
                                 array('required',
                                 'class'=>'form-control')) !!}
-
                             </div>
-                                    </div>
-                            </div>
-                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-6">
                             <div class="form-group">
                                 {!! Form::label('Amount Requested:') !!}
-                                {!! Form::text('amount_req', null,
+                                {!! Form::text('amount_req', '0.00',
                                 array('required',
                                 'class'=>'form-control input-sm',
                                 'placeholder'=>'Amount Required')) !!}

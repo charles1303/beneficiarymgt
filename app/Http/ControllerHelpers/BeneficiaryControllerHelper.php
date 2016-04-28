@@ -19,7 +19,7 @@ class BeneficiaryControllerHelper {
 
         $beneficiary = new Beneficiary();
 
-        $beneficiary->beneficiary_num = $request->get('beneficiary_num');
+        //$beneficiary->beneficiary_num = $request->get('beneficiary_num');
         $beneficiary->firstname = $request->get('first_name');
         $beneficiary->lastname = $request->get('last_name');
         $date=date_create($request->get('date_of_birth'));
@@ -32,7 +32,16 @@ class BeneficiaryControllerHelper {
         $beneficiary->employment_status = $request->get('employment_status');
         $beneficiary->occupation = $request->get('occupation');
 
+        return $this->generateBeneficiaryNum($beneficiary);
+
+    }
+
+    private function generateBeneficiaryNum(Beneficiary $beneficiary){
+        $maxId = $beneficiary->getMaxId();
+        $id = $maxId[0]->id;
+        $beneficiary->beneficiary_num = 'HB' . '000' . $id;
         return $beneficiary;
+
 
     }
 

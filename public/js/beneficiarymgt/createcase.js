@@ -52,7 +52,7 @@ $(document).ready(function() {
                 params.page = params.page || 1;
                 return {
                     results: $.map(data, function(obj) {
-                        return { id: obj.id, text: obj.firstname };
+                        return { id: obj.id, text: obj.firstname+', '+obj.lastname+' ('+obj.beneficiary_num+')' };
                     })
                 };
             },
