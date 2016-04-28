@@ -33,6 +33,7 @@
                                                 <th nowrap>Case No</th>
                                                 <th nowrap>Case Type</th>
                                                 <th nowrap>Duration</th>
+                                                <th nowrap>Trail</th>
                                                 
                                             </thead>
                                             <tbody>
@@ -45,6 +46,7 @@
                                                     <td>{{$case->case_num}}</td>
                                                     <td>{{$case->caseType->description}}</td>
                                                     <td>{{$case->getDuration() . '  days'}}</td>
+                                                    <td><a href='{{ url('/viewcase/'. $case->id) }}'>View Trail</a></td>
 
                                                 </tr>
                                             @endforeach

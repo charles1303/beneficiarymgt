@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Http\Requests\BeneficiaryCaseRequest;
+use Auth;
 
 use App\Http\ControllerHelpers\BeneficiaryCaseControllerHelper;
 use App\Http\Util\EmailUtil;
@@ -95,6 +96,26 @@ class BeneficiaryCaseController extends Controller
 
     }
 
+    public function viewCase($id)
+    {
+
+        $message = '';
+        $messageClass = '';
+        $caseUpdates = null;
+
+        try{
+            $beneficiaryCaseControllerHelper = new BeneficiaryCaseControllerHelper();
+            $caseUpdates = $beneficiaryCaseControllerHelper->getCaseUpdates($id);
+        }catch(Exception $ex){
+            $message = 'Error updating case. Please contact Administrator! ' . $ex->getMessage();
+            $messageClass = 'alert alert-error';
+            //throw $ex;
+        }
+
+        return view('layouts/beneficiary/viewcaseupdates',array('caseUpdates'=>$caseUpdates,'message' =>$message,'messageClass' => $messageClass));
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -143,7 +164,9 @@ class BeneficiaryCaseController extends Controller
 
     public function beneficiaryCaseById(Request $request){
         $id = $request->get('id');
-        $beneficiaryCases = BeneficiaryCase::getCaseByBeneficiaryId($id);
+        //$beneficiaryCases = BeneficiaryCase::getCaseByBeneficiaryId($id);
+        $currentUser = Auth::user();
+        $beneficiaryCases = BeneficiaryCase::getBeneficiaryCaseByBeneficiaryId($currentUser,$id);
         $json = response()->json($beneficiaryCases);
         return $json;
 

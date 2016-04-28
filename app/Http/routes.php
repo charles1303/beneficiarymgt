@@ -31,6 +31,9 @@ Route::group(['middleware' => 'web'], function () {
    	Route::get('createcase',
         ['as' => 'createcase', 'uses' => 'BeneficiaryCaseController@create']);
 
+    Route::get('viewcase/{id}',
+        ['as' => 'viewcase/{id}', 'uses' => 'BeneficiaryCaseController@viewCase']);
+
     Route::get('updatecase',
         ['as' => 'updatecase', 'uses' => 'BeneficiaryCaseController@getCase']);
 

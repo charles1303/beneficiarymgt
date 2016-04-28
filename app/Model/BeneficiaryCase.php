@@ -30,7 +30,20 @@ class BeneficiaryCase extends Model
         return $this->belongsTo('App\Model\CaseType','case_type_id');
     }
 
-    public function getCaseByCaseOfficer($case_officer_id){
+
+    public function getMyCases($currentUser){
+        if($currentUser->group == '1') {
+            $cases = $this->getCaseByCaseOfficer($currentUser->id);
+        }elseif($currentUser->group == '3') {
+            $cases = $this->getCasesForChurchOffice($currentUser->id);
+        }else{
+            $cases = $this->getCases();
+        }
+        return $cases;
+
+    }
+
+    private function getCaseByCaseOfficer($case_officer_id){
         $cases = BeneficiaryCase::with('beneficiary')->with('caseOfficer')->with('backupCaseOfficer')->with('caseType')->where('case_officer_id','=', $case_officer_id)
                 ->orderBy('entry_date', 'desc')
                 ->get();
@@ -39,7 +52,7 @@ class BeneficiaryCase extends Model
         return $cases;
     }
 
-    public function getCases(){
+    private function getCases(){
         $cases = BeneficiaryCase::with('beneficiary')->with('caseOfficer')->with('backupCaseOfficer')->with('caseType')
             ->orderBy('entry_date', 'desc')
             ->get();
@@ -48,7 +61,7 @@ class BeneficiaryCase extends Model
         return $cases;
     }
 
-    public function getCasesForChurchOffice($case_officer_id){
+    private function getCasesForChurchOffice($case_officer_id){
         $cases = BeneficiaryCase::with('beneficiary')->with('caseOfficer')->with('backupCaseOfficer')->with('caseType')->where('case_status','=', '1')
             ->orWhere('case_officer_id','=', $case_officer_id)
             ->orderBy('entry_date', 'desc')
@@ -66,8 +79,37 @@ class BeneficiaryCase extends Model
         return $diff->format('%R%a ');
     }
 
-    public static function getCaseByBeneficiaryId($id){
+    public static function getBeneficiaryCaseByBeneficiaryId($currentUser,$id){
+
+        if($currentUser->group == '1') {
+            $cases = self::getCaseByBeneficiaryIdForCaseOfficer($currentUser,$id);
+        }elseif($currentUser->group == '3') {
+            $cases = self::getCaseByBeneficiaryIdForChurchOfficer($currentUser,$id);
+        }else{
+            $cases = self::getCaseByBeneficiaryId($id);
+        }
+
+
+        return $cases;
+    }
+
+    private static function getCaseByBeneficiaryId($id){
         $cases = BeneficiaryCase::with('beneficiary')->where('beneficiary_id','=', $id)
+            ->get();
+        return $cases;
+    }
+
+    private static function getCaseByBeneficiaryIdForCaseOfficer($currentUser,$id){
+        $cases = BeneficiaryCase::with('beneficiary')->where('beneficiary_id','=', $id)
+            ->where('case_officer_id','=', $currentUser->id)
+            ->get();
+        return $cases;
+    }
+
+    private static function getCaseByBeneficiaryIdForChurchOfficer($currentUser,$id){
+        $cases = BeneficiaryCase::with('beneficiary')->where('beneficiary_id','=', $id)
+            ->where('case_status','=', '1')
+            ->where('case_officer_id','=', $currentUser->id)
             ->get();
         return $cases;
     }

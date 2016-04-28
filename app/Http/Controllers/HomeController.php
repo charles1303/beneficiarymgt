@@ -31,14 +31,7 @@ class HomeController extends Controller
         $currentUser = Auth::user();
 
         $beneficiaryCase = new BeneficiaryCase();
-        if($currentUser->group == '1') {
-            $cases = $beneficiaryCase->getCaseByCaseOfficer($currentUser->id);
-        }elseif($currentUser->group == '3') {
-            $cases = $beneficiaryCase->getCasesForChurchOffice($currentUser->id);
-        }else{
-            $cases = $beneficiaryCase->getCases();
-        }
-
+        $cases = $beneficiaryCase->getMyCases($currentUser);
         return view('home',['cases' => $cases]);
     }
 }

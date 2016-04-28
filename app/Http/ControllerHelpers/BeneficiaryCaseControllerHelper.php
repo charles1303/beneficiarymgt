@@ -77,4 +77,16 @@ class BeneficiaryCaseControllerHelper {
 
     }
 
+    public function getCaseUpdates($case_id){
+        $caseDetails = [];
+        $beneficiaryCaseUpdate = new BeneficiaryCaseUpdate();
+        $caseUpdates = $beneficiaryCaseUpdate->getCaseUpdates($case_id);
+        if(count($caseUpdates) < 1){
+            $caseDetails['case'] = BeneficiaryCase::find($case_id);
+        }else{
+            $caseDetails['updates'] = $caseUpdates;
+        }
+        return $caseDetails;
+    }
+
 }

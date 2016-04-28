@@ -20,4 +20,13 @@ class BeneficiaryCaseUpdate extends Model
         return $this->belongsTo('App\User','updated_by');
     }
 
+    public function getCaseUpdates($case_id){
+        $caseUpdates = BeneficiaryCaseUpdate::with('beneficiaryCase')->where('case_id','=', $case_id)
+            ->orderBy('entry_date', 'desc')
+            ->get();
+
+
+        return $caseUpdates;
+    }
+
 }

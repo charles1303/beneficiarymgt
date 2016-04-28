@@ -14,6 +14,7 @@ class Beneficiary extends BaseModel
 	public function searchBeneficiary($term){
 		return DB::table('beneficiaries')
                 ->where('firstname', 'like', '%'.$term.'%')
+				->orWhere('lastname','like', '%'.$term.'%')
                 ->get();
 		//return self::where('firstname', 'like', '%'.$term.'%')->lists('beneficiary_num','id')->toArray();
 	}
@@ -21,6 +22,7 @@ class Beneficiary extends BaseModel
 	public function getBeneficiaryById($term){
 		return DB::table('beneficiaries')
 			->where('firstname', 'like', '%'.$term.'%')
+			->orWhere('lastname','like', '%'.$term.'%')
 			->get();
 		//return self::where('firstname', 'like', '%'.$term.'%')->lists('beneficiary_num','id')->toArray();
 	}
