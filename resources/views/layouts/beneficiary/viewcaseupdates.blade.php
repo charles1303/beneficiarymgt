@@ -33,6 +33,28 @@
                     @endif
                 </div>
                 <div class="panel-body">
+                    @if (isset($caseUpdates) && (count($caseUpdates['updates']) > 0))
+
+                        @foreach ($caseUpdates['updates'] as $update)
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    {!! Form::textarea('case_update',$update->comment ,
+                                    array('required', 'readonly',
+                                    'class'=>'form-control',
+                                    'placeholder'=>'Case Update','rows'=>'5')) !!}
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <span id='entry_date' class='text-primary'><strong><em>Entry Date: {{$update->entry_date }}</em></strong></span><br/>
+                            </div>
+                            <div class="col-xs-12">
+                                <span id='entered_by' class='text-primary'><strong><em>Entered By: {{$update->updatedBy->name }}</em></strong></span><br/>
+                            </div>
+                        @endforeach
+
+
+                    @endif
                 </div>
             </div>
         </div>
