@@ -26,14 +26,28 @@
                     </div>
                 @endif
                 <div class="panel-heading">
-                    @if (isset($caseUpdates) && (count($caseUpdates['updates']) > 0))
+                    @if (isset($caseUpdates['updates']) && (count($caseUpdates['updates']) > 0))
                         <h3 class="panel-title">Beneficiary Case Updates for Case File {{$caseUpdates['updates'][0]->beneficiaryCase->case_num}}</h3>
                     @else
                         <h3 class="panel-title">Beneficiary Has no Case Updates</h3>
                     @endif
                 </div>
                 <div class="panel-body">
-                    @if (isset($caseUpdates) && (count($caseUpdates['updates']) > 0))
+                    <div class="col-xs-12">
+
+                        <div id='beneficiary_case'>
+                            <span id='ben_num' class='text-primary'><strong><em>Beneficiary Number : {{$caseUpdates['case']->beneficiary->beneficiary_num}}</em></strong></span><br/>
+                            <span id='ben_fname' class='text-primary'><strong><em>Beneficiary First Name : {{$caseUpdates['case']->beneficiary->firstname}}</em></strong></span><br/>
+                            <span id='ben_lname' class='text-primary'><strong><em>Beneficiary Last Name : {{$caseUpdates['case']->beneficiary->lastname}}</em></strong></span><br/>
+                            <span id='case_file_no' class='text-primary'><strong><em>Beneficiary Case File No : {{$caseUpdates['case']->case_num}}</em></strong></span><br/>
+                            <span id='case_type' class='text-primary'><strong><em>Case Type : {{$caseUpdates['case']->caseType->description}}</em></strong></span><br/>
+                            <span id='case_req_amt' class='text-primary'><strong><em>Requested Amount : {{number_format($caseUpdates['case']->amount_requested,2)}}</em></strong></span><br/>
+                            <span id='case_entry_date' class='text-primary'><strong><em>Case Entry Date : {{$caseUpdates['case']->entry_date}}</em></strong></span><br/>
+
+                        </div>
+
+                    </div>
+                    @if (isset($caseUpdates['updates']) && (count($caseUpdates['updates']) > 0))
 
                         @foreach ($caseUpdates['updates'] as $update)
                             <div class="col-xs-12">
@@ -52,8 +66,7 @@
                                 <span id='entered_by' class='text-primary'><strong><em>Entered By: {{$update->updatedBy->name }}</em></strong></span><br/>
                             </div>
                         @endforeach
-
-
+                        
                     @endif
                 </div>
             </div>

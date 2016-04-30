@@ -33,10 +33,10 @@ class BeneficiaryCaseControllerHelper {
         $case->backupCaseOfficer()->associate($back_up_case_officer);
         $case->entry_date = date("Y-m-d");
         $case->comment = $request->get('case_descr');
-        $case->amount = $request->get('amount_req');
+        $case->amount_requested = $request->get('amount_req');
         $case->case_status = '0';
         $case = $this->generateCasFileNum($case);
-        $case_type = CaseType::find(1);
+        $case_type = CaseType::find((int)$request->get('case_type'));
         $case->caseType()->associate($case_type);
         return $case;
 
@@ -71,7 +71,10 @@ class BeneficiaryCaseControllerHelper {
     private function generateCasFileNum(BeneficiaryCase $beneficiaryCase){
         $maxId = $beneficiaryCase->getMaxId();
         $id = $maxId[0]->id;
-        $beneficiaryCase->case_num = 'CF' . '000' . $id;
+        if(!isset($id)){
+            $id = 0;
+        }
+        $beneficiaryCase->case_num = 'CF' . '000' . ((int)$id+1);
         return $beneficiaryCase;
 
 
@@ -81,9 +84,8 @@ class BeneficiaryCaseControllerHelper {
         $caseDetails = [];
         $beneficiaryCaseUpdate = new BeneficiaryCaseUpdate();
         $caseUpdates = $beneficiaryCaseUpdate->getCaseUpdates($case_id);
-        if(count($caseUpdates) < 1){
-            $caseDetails['case'] = BeneficiaryCase::find($case_id);
-        }else{
+        $caseDetails['case'] = BeneficiaryCase::find($case_id);
+        if(count($caseUpdates) > 0){
             $caseDetails['updates'] = $caseUpdates;
         }
         return $caseDetails;

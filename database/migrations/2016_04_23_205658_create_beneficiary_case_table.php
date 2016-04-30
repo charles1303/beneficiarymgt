@@ -19,8 +19,8 @@ class CreateBeneficiaryCaseTable extends Migration
             $table->integer('back_up_case_officer_id')->unsigned();
             $table->date('entry_date');
             $table->longText('comment');
-            $table->decimal('amount_released',7,2)->default(0.00);
-            $table->decimal('amount_requested',7,2)->default(0.00);
+            $table->decimal('amount_released',12,2)->default(0.00);
+            $table->decimal('amount_requested',12,2)->default(0.00);
             $table->string('case_status');
             $table->string('case_num')->unique();
             $table->bigInteger('case_type_id')->unsigned();

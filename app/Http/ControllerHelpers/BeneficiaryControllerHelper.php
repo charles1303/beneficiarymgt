@@ -39,7 +39,10 @@ class BeneficiaryControllerHelper {
     private function generateBeneficiaryNum(Beneficiary $beneficiary){
         $maxId = $beneficiary->getMaxId();
         $id = $maxId[0]->id;
-        $beneficiary->beneficiary_num = 'HB' . '000' . $id;
+        if(!isset($id)){
+            $id = 0;
+        }
+        $beneficiary->beneficiary_num = 'HB' . '000' . ((int)$id+1);
         return $beneficiary;
 
 

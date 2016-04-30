@@ -66,7 +66,7 @@
                         <div class="col-xs-12">
                             <div class="form-group">
                                 {!! Form::label('Type:') !!}
-                                {!! Form::select('case_type', array('E'=>'Empowerment','A'=>'Accommodation','M'=>'Medical','T'=>'Tuition'),
+                                {!! Form::select('case_type', array('3'=>'Empowerment','4'=>'Accommodation','1'=>'Medical','2'=>'Tuition'),
                                 array('required',
                                 'class'=>'form-control')) !!}
                             </div>
