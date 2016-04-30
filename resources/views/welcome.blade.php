@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Benevolence Department Portal. Please Login or register to continue.
+                    Benevolence Department Portal. Please <a href="{{ url('/login') }}">Login</a> or <a href="{{ url('/register') }}">Register</a> to continue.
                 </div>
             </div>
         </div>
