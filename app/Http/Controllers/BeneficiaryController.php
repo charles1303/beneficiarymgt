@@ -54,7 +54,7 @@ class BeneficiaryController extends Controller
             $messageClass = 'alert alert-success';
         }catch(Exception $ex){
             $message = 'Error creating beneficiary. Please contact Administrator! ' . $ex->getMessage();
-            $messageClass = 'alert alert-error';
+            $messageClass = 'alert alert-danger';
             //throw $ex;
         }
 

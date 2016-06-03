@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <title>Benevolence</title>
 
 	   <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Fonts -->
+    <!-- Fonts
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
+-->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
     
@@ -55,6 +56,20 @@
                         <li><a href="{{ url('/createbeneficiary') }}">Create Beneficiary</a></li>
                         <li><a href="{{ url('/createcase') }}">Create Case</a></li>
                         <li><a href="{{ url('/updatecase') }}">Update Case</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Admin <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/users') }}"><i class="fa fa-btn fa-sign-out"></i>Users</a></li>
+                                <li><a href="{{ url('/beneficiaries') }}"><i class="fa fa-btn fa-sign-out"></i>Beneficiaries</a></li>
+                                <li><a href="{{ url('/cases') }}"><i class="fa fa-btn fa-sign-out"></i>Cases</a></li>
+                            </ul>
+                        </li>
+
+
                     @endif
 
                 </ul>
@@ -86,6 +101,10 @@
 
 
 
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        });
+    </script>
 </body>
 </html>

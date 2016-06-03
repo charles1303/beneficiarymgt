@@ -53,8 +53,18 @@ class BeneficiaryCase extends Model
         return $cases;
     }
 
-    private function getCases(){
+    public function getCases(){
         $cases = BeneficiaryCase::with('beneficiary')->with('caseOfficer')->with('backupCaseOfficer')->with('caseType')
+            ->orderBy('entry_date', 'desc')
+            ->get();
+
+
+        return $cases;
+    }
+
+    public function getCasesByDateRange($start_date, $end_date){
+        $cases = BeneficiaryCase::with('beneficiary')->with('caseOfficer')->with('backupCaseOfficer')->with('caseType')
+            ->whereBetween('entry_date', [$start_date, $end_date])
             ->orderBy('entry_date', 'desc')
             ->get();
 

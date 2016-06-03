@@ -27,6 +27,28 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('pendingcases',
         ['as' => 'pendingcases', 'uses' => 'BeneficiaryCaseController@index']);
 
+    Route::get('users',
+        ['as' => 'users', 'uses' => 'AdminController@getAllUsers']);
+
+    Route::get('beneficiaries',
+        ['as' => 'beneficiaries', 'uses' => 'AdminController@getAllBeneficiaries']);
+
+    Route::get('cases',
+        ['as' => 'cases', 'uses' => 'AdminController@getAllBeneficiaryCases']);
+    Route::post('cases',
+        ['as' => 'cases', 'uses' => 'AdminController@getAllBeneficiaryCases']);
+
+    Route::get('updateuser',
+        ['as' => 'updateuser', 'uses' => 'UserController@getUser']);
+
+    Route::get('viewuser/{id}',
+        ['as' => 'viewuser/{id}', 'uses' => 'UserController@viewUser']);
+
+    Route::post('updateuser',
+        ['as' => 'updateuser', 'uses' => 'UserController@updateUser']);
+
+    Route::post('resetuser',
+        ['as' => 'resetuser', 'uses' => 'UserController@resetUserStatus']);
 
    	Route::get('createcase',
         ['as' => 'createcase', 'uses' => 'BeneficiaryCaseController@create']);

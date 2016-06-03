@@ -80,10 +80,6 @@ $(document).ready(function() {
         UpdateCase.getBeneficiaryCase($(this).val());
     });
 
-    /*$('#beneficiaryCase').select2({
-         data: [{ id: 1, text: 'A' }, { id: 3, text: 'C' }]
-    });*/
-
 });
 
 

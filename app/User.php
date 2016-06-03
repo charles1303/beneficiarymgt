@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','group'
+        'name', 'email', 'password','group','active'
     ];
 
     /**
@@ -37,6 +37,20 @@ class User extends Authenticatable
             ->select(DB::raw('max(id) as id'))
             ->get();
         return $maxId;
+    }
+
+    public static function activateUser($userIds){
+        DB::table('users')
+            ->whereIn('id', $userIds)
+            ->update(['active' => 1]);
+
+    }
+
+    public static function resetUserStatus($userIds,$status){
+        DB::table('users')
+            ->whereIn('id', $userIds)
+            ->update(['active' => $status]);
+
     }
 
 

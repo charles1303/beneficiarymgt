@@ -91,4 +91,16 @@ class BeneficiaryCaseControllerHelper {
         return $caseDetails;
     }
 
+    public function getCases($request){
+        $caseModel = new BeneficiaryCase();
+        $start_date = $request->get('dt_start');
+        $end_date = $request->get('dt_end');
+
+        if(isset($start_date) && isset($end_date)){
+            return $caseModel->getCasesByDateRange($start_date,$end_date);
+        }else{
+            return $caseModel->getCases();
+        }
+    }
+
 }
