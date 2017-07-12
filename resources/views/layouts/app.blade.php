@@ -56,6 +56,8 @@
                         <li><a href="{{ url('/createbeneficiary') }}">Create Beneficiary</a></li>
                         <li><a href="{{ url('/createcase') }}">Create Case</a></li>
                         <li><a href="{{ url('/updatecase') }}">Update Case</a></li>
+                        <li><a href="{{ url('/upload') }}">File Upload</a></li>
+                        <li><a href="{{ url('/viewfileupload') }}">View File Uploads</a></li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

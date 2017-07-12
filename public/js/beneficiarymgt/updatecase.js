@@ -37,6 +37,7 @@ var UpdateCase ={
                     $('#beneficiary span').show();
                     $('#ben_cases').show();
                 }else{
+                    $('span#search_msg').html('');
                     $('span#search_msg').append('No case exists for selected beneficiary!');
                     $('#beneficiary span').hide();
                     $('#ben_cases').hide();

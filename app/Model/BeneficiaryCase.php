@@ -84,9 +84,10 @@ class BeneficiaryCase extends Model
 
     public function getDuration()
     {
+        if(in_array($this->case_status,[2,3])) return 0;
         $from=date_create(date('Y-m-d'));
         $to=date_create($this->entry_date);
-        $diff=date_diff($from,$to);
+        $diff=date_diff($to,$from);
         return $diff->format('%R%a ');
     }
 

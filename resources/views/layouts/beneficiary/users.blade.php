@@ -10,10 +10,15 @@
 
 <link href="{!! asset('css/bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
 <link href="{!! asset('css/datatables/dataTables.bootstrap.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+<link href="{!! asset('css/datatables/buttons.dataTables.min.css') !!}" media="all" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="{!! asset('js/jquery.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/datatables/jquery.dataTables.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/datatables/dataTables.bootstrap.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/datatables/dataTables.buttons.min.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/beneficiarymgt/users.js') !!}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+
 
 
 @section('content')

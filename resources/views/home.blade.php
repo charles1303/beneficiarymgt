@@ -16,7 +16,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in!&nbsp;&nbsp;&nbsp;&nbsp; <h3>{{$activeMsg}}</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-default">

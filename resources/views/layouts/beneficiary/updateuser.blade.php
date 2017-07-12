@@ -58,9 +58,10 @@
 
                                 <div class="col-md-6">
                                     <select name="group">
-                                        <option value="1" @if ($user->group == '1') selected @endif>Member</option>
+                                        <option value="1" @if ($user->group == '1') selected @endif>Case Officer</option>
                                         <option value="2"  @if ($user->group == '2') selected @endif>Admin</option>
                                         <option value="3"  @if ($user->group == '3') selected @endif>Church Office</option>
+                                        <option value="4"  @if ($user->group == '4') selected @endif>Pastorate</option>
                                     </select>
 
                                     @if ($errors->has('group'))

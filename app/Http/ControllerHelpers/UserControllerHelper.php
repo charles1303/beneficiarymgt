@@ -43,6 +43,7 @@ class UserControllerHelper {
                 $user->name =  $usersDataRequest->get('name');
                 $user->email =  $usersDataRequest->get('email');
                 $user->group =  $usersDataRequest->get('group');
+                $user->active = 1;
                 $user->update();
 
             }

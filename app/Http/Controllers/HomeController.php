@@ -25,13 +25,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $currentUser = Auth::user();
 
         $beneficiaryCase = new BeneficiaryCase();
         $cases = $beneficiaryCase->getMyCases($currentUser);
-        return view('home',['cases' => $cases]);
+        return view('home',['cases' => $cases,'activeMsg' => $request->session()->get('activeMsg')]);
     }
 }

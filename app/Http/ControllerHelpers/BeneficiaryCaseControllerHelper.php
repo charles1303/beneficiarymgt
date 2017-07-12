@@ -16,6 +16,7 @@ use App\Model\BeneficiaryCaseUpdate;
 use App\User;
 use App\Model\CaseType;
 use Auth;
+use Carbon\Carbon as CarbonDate;
 
 
 class BeneficiaryCaseControllerHelper {
@@ -68,13 +69,14 @@ class BeneficiaryCaseControllerHelper {
 
     }
 
-    private function generateCasFileNum(BeneficiaryCase $beneficiaryCase){
+   private function generateCasFileNum(BeneficiaryCase $beneficiaryCase){
+        $date = CarbonDate::now();
         $maxId = $beneficiaryCase->getMaxId();
         $id = $maxId[0]->id;
         if(!isset($id)){
             $id = 0;
         }
-        $beneficiaryCase->case_num = 'CF' . '000' . ((int)$id+1);
+        $beneficiaryCase->case_num = $date->year . $date->month . ((int)$id+1);
         return $beneficiaryCase;
 
 

@@ -36,6 +36,9 @@ class AuthController extends Controller
 
     protected $guard = 'web';
 
+    protected $username = 'email';
+
+
     /**
      * Create a new authentication controller instance.
      *
